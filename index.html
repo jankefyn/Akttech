@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="DESCRIPTION META TAG">
+  <meta property="og:title" content="SOCIAL MEDIA TITLE TAG" />
+  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG" />
+  <meta property="og:url" content="URL OF THE WEBSITE" />
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <meta property="og:image" content="static/image/your_banner_image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+
+  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
+  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Keywords for your paper to be indexed by-->
+  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>The usage of NeRFs in games</title>
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">The usage of NeRFs in games</h1>
+            <div class="is-size-5 publication-authors">
+              <!-- Paper authors -->
+              <span class="author-block">
+                <a href="" target="_blank">Fynn Janke</a><sup>*</sup>,</span>
+
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">HFU<br>Aktuelle Technologien im bereich der digitalen Medien</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- Arxiv PDF link -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+
+                <!-- Supplementary PDF link -->
+                <span class="link-block">
+                  <a href="static/pdfs/supplementary_material.pdf" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Supplementary</span>
+                  </a>
+                </span>
+
+                <!-- Github link -->
+                <span class="link-block">
+                  <a href="https://github.com/YOUR REPO HERE" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+                <!-- ArXiv abstract Link -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Teaser video-->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <video poster="" id="tree" autoplay controls muted loop height="100%">
+          <!-- Your video here -->
+          <source src="static/videos/banner_video.mp4" type="video/mp4">
+        </video>
+        <h2 class="subtitle has-text-centered">
+          In the video, I am portrayed as a video game character generated using a neural radiance field (NeRF)
+          technique, which will be discussed in the forthcoming paper. The video showcases a simulated rendition of
+          myself engaging in dynamic movements within a digital environment.
+      </div>
+    </div>
+  </section>
+  <!-- End teaser video -->
+
+  <!-- Paper abstract -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              The rapid advancements in computer graphics have significantly enhanced the visual fidelity of video
+              games, allowing players to immerse themselves in increasingly realistic virtual environments. However,
+              despite these technological strides, achieving photorealism with interactive objects and dynamic scenes
+              remains a challenging endeavor. In recent years, the emergence of Neural Radiance Fields (NeRFs) has shown
+              great promise in bridging the gap between realistic rendering and interactive gameplay. <br><br>
+
+              NeRFs are a class of generative models that leverage neural networks to represent complex 3D scenes by
+              capturing the volumetric information of objects and their interaction with light. Unlike traditional
+              rendering techniques, which rely on polygonal meshes and surface representations, NeRFs can represent
+              objects and scenes at a sub-pixel level, offering unprecedented levels of detail and realism. By learning
+              from a collection of 2D images taken from different viewpoints, NeRFs can infer the underlying 3D
+              structure of a scene, allowing for novel views and dynamic interactions with objects. <br><br>
+
+
+              The integration of NeRFs in video games opens up exciting possibilities for developers and players alike.
+              Firstly, NeRFs enable the creation of virtual worlds that are visually indistinguishable from reality,
+              leading to enhanced immersion and a heightened sense of presence for players. Detailed object
+              representations and accurate lighting models allow for realistic shading, reflections, and global
+              illumination, resulting in visually stunning environments. <br><br>
+
+              However, the adoption of NeRFs in video games also presents challenges. That I want to cover in the
+              following paper
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End paper abstract -->
+
+  <!-- Introduction and Methodology-->
+  <section class="section hero is-white">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Introduction and Methodology</h2>
+          <div class="content has-text-justified">
+            <p>
+              Introduction: <br><br>
+              The integration of object recognition, animation, and physics simulation techniques is essential for
+              creating immersive experiences in virtual environments. This study explores the integration of the Luma AI
+              app, rigging and animating (in this case with Mixamo) and Unreal Engine to facilitate object recognition,
+              animation, and physics simulation.<br><br>
+
+              Methodology:<br>
+              2.1 Installation of Luma AI App:
+              The Luma AI app was installed on an iPhone 11 with iOS 16.0.2, enabling object recognition capabilities
+              through the device's camera.<br><br>
+              2.2 Creating Virtual Representations:<br>
+              The living room was digitally recreated using Bionicles and a candle as objects of interest. Multiple
+              nerfs were modeled based on the Bionicles, and a candle was designed as a separate object.
+              <br><br>
+              2.3 Rigging Bionicles with Mixamo:<br>
+              Mixamo's auto rigging feature was employed to rig the Bionicles. This process automated the skeleton
+              creation, allowing for seamless animation integration.
+              <br><br>
+              2.4 Animation Selection:<br>
+              Various animations were chosen from the Mixamo library to bring the Bionicles to life. These animations
+              added dynamic movements and actions to the virtual characters.
+              <br><br>
+              2.5 Integration into Unreal Engine:<br>
+              The rigged Bionicles, along with the candle, were imported into Unreal Engine for use in a video game. The
+              engine facilitated real-time rendering, physics simulation, and interactivity.
+              <br><br>
+              3. Physics:<br>
+              Physical simulations were employed to investigate the feasibility of their utilization, and a
+              comprehensive examination was conducted to ascertain the potential issues that may arise.
+              <br><br>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end Introduction and Methodology -->
+
+
+  <!-- Main Parrt-->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Discussion</h2>
+          <div class="content has-text-justified">
+            <p>
+              Initially, I embarked on the process of developing Nerfs using NerfStudio to gain a comprehensive
+              understanding of their functioning and identify key areas of focus. Subsequently, my attention shifted
+              towards capturing the requisite images for my NeRFs utilizing the iOS application provided by Luma AI.
+              In the subsequent video, you can observe my initial Neural Radiance Field (NeRF) rendition, crafted using
+              Nerf Studio.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser is-light">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <video poster="" id="tree" autoplay controls muted loop height="100%">
+          <!-- Your video here -->
+          <source src="../videos/NeRFGarten.mp4" type="video/mp4">
+        </video>
+        <h2 class="subtitle has-text-centered">
+          The video features a nerf I created of my garden
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section hero is-white">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <div class="content has-text-justified">
+            <p>
+              When utilizing the Luma AI Plugin for Unreal Engine 5, you gain access to a pre-configured starter project
+              provided by Luma. This setup includes specific settings that enable you to seamlessly import any NeRF
+              (Neural Radiance Fields) you have created with Luma AI. By effortlessly dragging and dropping your NeRF
+              into the engine, you can immediately visualize and interact with it. Since the NeRF consists solely of a
+              neural network composed of points and lacks a hitbox or any physical geometry, you have the freedom to
+              navigate your camera unhindered within the NeRF. This freedom of movement within the NeRF can result in
+              captivating visual effects, as exemplified in the accompanying video.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <video poster="" id="tree" autoplay controls muted loop height="100%">
+          <!-- Your video here -->
+          <source src="../videos/MovingUnhinderedWithinANeRF.mp4" type="video/mp4">
+        </video>
+        <h2 class="subtitle has-text-centered">
+          The video features visual effects you encounter when your camera moves unhindered within the NeRF
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <div class="content has-text-justified">
+            <p>
+              When embarking on game development, you will soon discover that when attempting to spawn objects within
+              the NeRF that follow the laws of gravity, they simply pass through the NeRF without any interaction, as
+              demonstrated in the subsequent video.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="hero teaser is-light">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <video poster="" id="tree" autoplay controls muted loop height="100%">
+          <!-- Your video here -->
+          <source src="../videos/FallingThroughWorld.mp4" type="video/mp4">
+        </video>
+        <h2 class="subtitle has-text-centered">
+          The video showcases a character falling through the NeRF environment, affected by the force of gravity.
+      </div>
+    </div>
+  </section>
+  <section class="section hero is-white">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <div class="content has-text-justified">
+            <p>
+              When faced with this challenge, you may consider employing a transparent ground as a potential solution.
+              However, it is important to note that this approach presents its own set of limitations. In reality, very
+              few floors possess a perfectly level and flat surface. Consequently, when implementing a transparent
+              ground, you will encounter instances where the character's interaction with the NeRF may not accurately
+              reflect real-world physics. <br><br>
+
+              In the forthcoming video demonstration, you will witness the character's remarkable ability to navigate
+              through the NeRF without succumbing to gravitational forces. Despite this achievement, you will also
+              observe occasional discrepancies. At times, the character's feet may appear to descend below the visible
+              surface of the NeRF, suggesting a lack of proper contact with the ground. Conversely, there will be
+              instances where the character's feet appear elevated above the surface, creating a visual inconsistency.
+
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <video poster="" id="tree" autoplay controls muted loop height="100%">
+          <!-- Your video here -->
+          <source src="../videos/FeetDIssapearingAndAppearing.mp4" type="video/mp4">
+        </video>
+        <h2 class="subtitle has-text-centered">
+          The video showcases the phenomenon of the character's feet either vanishing or levitating above the ground.
+      </div>
+    </div>
+  </section>
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <div class="content has-text-justified">
+            <p>
+              These nuances in the character's positioning within the NeRF can be attributed to the inherent challenges
+              of simulating realistic physics in virtual environments. While the transparent ground offers a potential
+              workaround, it is important to be aware of its limitations and the occasional visual discrepancies it may
+              introduce. The pursuit of accurate physics representation within the NeRF remains an ongoing endeavor in
+              game development.
+              <br><br>
+              To address this challenge, an alternative solution is to download the entire NeRF as a mesh object with
+              proper geometry. By doing so, your character gains the ability to walk upon what was once a mere NeRF,
+              transforming it into a fully-fledged 3D asset serving as a convenient environment for your game. However,
+              it is important to consider the drawbacks associated with this approach.
+              <br><br>
+              The conversion process from NeRF to a mesh format results in a substantial increase in the mesh's
+              complexity, specifically in terms of the number of vertices it contains. This influx of vertices can
+              significantly impact the performance of your game, potentially leading to decreased efficiency and
+              responsiveness.
+              <br><br>
+              Furthermore, when mapping the NeRF artifacts onto the mesh, you may encounter small or even substantial
+              floating objects that obstruct movement and cannot be traversed. Consequently, your character will face
+              obstacles within the environment, as demonstrated in the accompanying video.
+
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image carousel -->
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+       <div class="item">
+        <!-- Your image here -->
+        <img src="../videos/mesh.png" alt="MY ALT TEXT"/>
+        <h2 class="subtitle has-text-centered">
+          The picture showcases the structure of the mesh created from a nerf.
+        </h2>
+      </div>
+      <div class="item">
+        <!-- Your image here -->
+        <img src="../videos/asNerf.png" alt="MY ALT TEXT"/>
+        <h2 class="subtitle has-text-centered">
+          The picture showcases the NeRF that lead to the earlier seen mesh.
+        </h2>
+      </div>   
+  </div>
+</div>
+</div>
+</section>
+
+  <section class="section hero is-white">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <div class="content has-text-justified">
+            <p>
+              While utilizing the NeRF as a mesh object provides the advantage of enhanced interaction and a more
+              tangible game environment, it is crucial to carefully consider the potential performance implications and
+              the presence of obstacles that may impede smooth navigation. Balancing these trade-offs is essential to
+              ensure an optimal gameplay experience.
+              <br><br>
+              Indeed, Luma offers the flexibility to crop your NeRF to match the desired size of your environment. This
+              feature allows you to scan specific objects such as a bridge and exclude unnecessary elements such as the
+              sky or other surroundings. By selectively isolating the bridge within the NeRF, you can then proceed to
+              convert the remaining portions into a mesh, resulting in a functional 3D asset with fewer distracting
+              artifacts.
+              <br><br>
+              The ability to crop the NeRF to the desired region enables you to focus on capturing high-quality details
+              of the specific object of interest. With proper cropping and precise adjustments, you can attain
+              impressive results, as exemplified in the accompanying video.
+              <br><br>
+              By utilizing this workflow, you can optimize the NeRF data to create a more refined and focused 3D asset.
+              Removing unwanted elements and reducing distracting artifacts enhances the visual quality and usability of
+              the resulting mesh. This approach allows for greater control over the final output, enabling developers to
+              create immersive game environments with precise object representation.
+              <br><br>
+              Luma's cropping feature, combined with the subsequent conversion to a mesh, empowers game developers to
+              leverage the strengths of NeRF technology while minimizing potential drawbacks, resulting in captivating
+              and accurate 3D assets for their projects.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <video poster="" id="tree" autoplay controls muted loop height="100%">
+          <!-- Your video here -->
+          <source src="../videos/CandleNoWalkthrough.mp4" type="video/mp4">
+        </video>
+        <h2 class="subtitle has-text-centered">
+          The video showcases the cropped nerf of a candle.
+      </div>
+    </div>
+  </section>
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <div class="content has-text-justified">
+            <p>
+              While NeRF technology does have certain limitations when it comes to capturing larger environments as a
+              whole, it excels in generating impressive results when trained on individual characters or objects. In
+              fact, training a NeRF specifically on a single character can yield remarkable outcomes within a remarkably
+              short time frame.
+              <br><br>
+              For instance, consider the following example where a NeRF of a Bionicle was created in just five minutes.
+              This rapid generation of a high-quality NeRF showcases the efficiency and effectiveness of the training
+              process when focused on a single subject.
+              <br><br>
+              By training a NeRF on a specific character, intricate details and unique characteristics can be captured
+              with exceptional fidelity. The resulting NeRF model encapsulates the essence of the character, enabling
+              developers to seamlessly integrate it into their games or other visual projects.
+              <br><br>
+              This NeRF training not only saves time but also offers immense creative possibilities. Within minutes,
+              developers can obtain a comprehensive representation of a character, allowing for swift iterations,
+              experimentation, and ultimately, the creation of captivating virtual experiences.
+              <br><br>
+              The ability to rapidly generate NeRFs for individual objects or characters could empower creators to
+              streamline their workflow and bring their visions to life with astounding speed and accuracy.
+              <br><br>
+              Exporting the NeRF as a GLTF and converting it to an FBX format yields an impressive outcome. The
+              resulting FBX closely resembles the real pictures of the Bionicle, showcasing its accuracy and fidelity.
+              This is particularly exciting for gaming purposes, as it provides a high-quality FBX asset that can be
+              utilized in various ways. The advantage of using such an FBX file is that it eliminates the need to spend
+              hours or even days creating a 3D model of similar quality from scratch.
+
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="hero teaser is-light">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <video poster="" id="tree" autoplay controls muted loop height="100%">
+          <!-- Your video here -->
+          <source src="../videos/NerfAsGLTF.mp4" type="video/mp4">
+        </video>
+        <h2 class="subtitle has-text-centered">
+          The video showcases the character created from a NeRF as GLTF.
+      </div>
+    </div>
+  </section>
+
+  <section class="section hero is-white">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <div class="content has-text-justified">
+            <p>
+              However, it's important to note that the generated mesh in the FBX format is initially a single clump
+              without bones or realistic anatomy. Nonetheless, there are solutions to overcome this limitation. One
+              option is to rig the mesh manually, enabling the addition of bones and realistic movement. Alternatively,
+              you can leverage software like Mixamo, which can automatically rig the character for you. In the case of
+              the Bionicle example, this process only took approximately two minutes.
+              <br><br>
+              By rigging the NeRF-derived mesh or using tools like Mixamo, you can bring life-like movement and
+              animation to the character, significantly enhancing its visual appeal and usability in gaming or other
+              projects. This streamlined workflow, combining the accuracy of the NeRF with the convenience of rigging
+              and animation tools, allows for rapid creation and integration of high-quality 3D assets into your game or
+              visual production.
+              <br><br>
+              Once you've reached that stage, you are granted the liberty to freely choose from a wide range of
+              animations provided on Mixamo. However, it is crucial to remain cognizant of the fact that these
+              animations lack awareness of any additional components your character may possess. Whether it's weapons,
+              shields, or any other items your character carries, these elements are not seamlessly integrated with the
+              Mixamo skeleton, potentially resulting in glitches or overlapping objects. Despite this limitation, the
+              animations themselves perform admirably and are typically sufficient for prototyping a game. Their primary
+              function revolves around manipulating the underlying skeleton of the FBX file you've generated from your
+              NeRF creation, ultimately bestowing lifelike movement upon your character within the game environment.
+              <br><br>
+              The primary challenge that arises pertains to the insufficient availability of data regarding the foot
+              structure and the precise positioning of the individual's weight. Consequently, when initiating the
+              character within a conventional physics-based simulation, it will topple over due to the inadequacy of a
+              stable standing surface and an evenly distributed weight distribution.
+
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <video poster="" id="tree" autoplay controls muted loop height="100%">
+          <!-- Your video here -->
+          <source src="../videos/LionRunning.mp4" type="video/mp4">
+        </video>
+        <h2 class="subtitle has-text-centered">
+          The video is showcasing a character animation that has been autorigged by Mixamo and animated using
+          standard animation sets.
+      </div>
+    </div>
+  </section>
+  <section class="hero teaser is-light">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <video poster="" id="tree" autoplay controls muted loop height="100%">
+          <!-- Your video here -->
+          <source src="../videos/RunningWithWeapons.mp4" type="video/mp4">
+        </video>
+        <h2 class="subtitle has-text-centered">
+          Here is a video that demonstrates how Mixamo animations do not account for the weapons held by a
+          character.
+      </div>
+    </div>
+  </section>
+  <section class="hero teaser ">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <video poster="" id="tree" autoplay controls muted loop height="100%">
+          <!-- Your video here -->
+          <source src="../videos/bionicleFallingOver.mp4" type="video/mp4">
+        </video>
+        <h2 class="subtitle has-text-centered">
+          The video showcases a bionicle falling over
+      </div>
+    </div>
+  </section>
+
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <div class="content has-text-justified">
+            <p>
+              By taking the initiative to create your own animations instead of relying on Mixamo's library, you have
+              the opportunity to ensure that such issues do not arise in your animations.
+              <br><br>
+              With this capability, you can swiftly create a non-player character (NPC) in a video game that performs a
+              dance routine and plays a straightforward role within a matter of minutes, a task that would typically
+              require hours if done from scratch.
+              <br><br>
+              Furthermore, this process offers a remarkable opportunity to incorporate real individuals, such as actors
+              or even oneself, into the immersive world of a video game. By following the same methodology employed with
+              the Bionicles, one can achieve a high level of personalization and realism. Allow me to present a
+              compelling collection of examples where I have transformed myself into a character using this established
+              technique. By harnessing this innovative approach, developers can unleash their creativity, bridging the
+              gap between reality and the virtual realm. This opens up new horizons for interactive experiences and
+              blurs the boundaries between the tangible and the digital, making it an enticing prospect for scientific
+              exploration and scholarly investigations.
+
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="hero teaser is-light">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <video poster="" id="tree" autoplay controls muted loop height="100%">
+          <!-- Your video here -->
+          <source src="static/videos/banner_video.mp4" type="video/mp4">
+        </video>
+        <h2 class="subtitle has-text-centered">
+          The videos showcase me as a digital character.
+      </div>
+    </div>
+  </section>
+  <section class="section hero is-white">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <div class="content has-text-justified">
+            <p>
+              An even more extraordinary and groundbreaking possibility emerges when utilizing characters created
+              through this innovative process to develop a fully realized third-person character for your game. Imagine
+              a scenario where individuals have the ability to seamlessly load a NeRF representation of themselves into
+              a new game, granting them the extraordinary opportunity to embody their own virtual avatar rather than
+              investing countless hours in customizing a character to resemble their unique features. This holds immense
+              significance, particularly in games that offer limited character customization options, where players are
+              often confined to playing generic, predetermined characters. However, with this transformative
+              advancement, players can now witness their virtual avatars undertaking incredible adventures and partaking
+              in extraordinary experiences, effectively bridging the gap between the real and virtual realms.
+              <br><br>
+              By allowing players to embody their true selves within the game, this groundbreaking development not only
+              enhances immersion but also establishes an unparalleled level of personal connection. Gone are the days of
+              playing as generic characters; now, players can marvel at their digital doppelgangers engaging in
+              awe-inspiring feats, realizing their wildest dreams within the virtual realm. This revolutionary approach
+              redefines the gaming landscape, empowering individuals to become active participants in the games they
+              love, enabling them to shape the narrative and embark on virtual journeys that mirror their own
+              aspirations. With this level of personalization and self-representation, the possibilities for immersive
+              and transformative gaming experiences are truly limitless.
+
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="hero teaser ">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <video poster="" id="tree" autoplay controls muted loop height="100%">
+          <!-- Your video here -->
+          <source src="static/videos/banner_video.mp4" type="video/mp4">
+        </video>
+        <h2 class="subtitle has-text-centered">
+          Herein lies an illustrative instance of my digital representation within a virtual gaming environment.
+      </div>
+    </div>
+  </section>
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <div class="content has-text-justified">
+            <p>
+              Considering all the aspects discussed, I firmly believe that NeRFs hold great potential for video games.
+              However, it is important to acknowledge that there is still much work to be done in this field. While
+              converting NeRFs into meshes may offer a way to create solid objects, it does come with the drawback of
+              losing the inherent advantages of NeRFs. Exploring alternative methods to retain the NeRF's unique
+              properties while ensuring solidity could lead to significant advancements in this area.
+              <br><br>
+              Nonetheless, the remarkable speed at which characters can be created from scratch using NeRF technology is
+              truly mind-boggling and opens up a world of possibilities. The efficiency and ease with which detailed and
+              realistic characters can be generated is truly groundbreaking, revolutionizing the game development
+              process.
+              <br><br>
+              Moreover, it would be immensely beneficial to incorporate physics simulations into NeRFs, enabling dynamic
+              interactions with the environment. For instance, introducing the effects of wind on thin surfaces like
+              leaves or grass would greatly enhance the realism and immersion of virtual worlds.
+              <br><br>
+              In conclusion, while there are challenges and areas that require further exploration, NeRFs have immense
+              potential to revolutionize the gaming industry. The ability to rapidly create detailed characters and the
+              possibility of incorporating physics simulations into NeRFs opens up exciting avenues for creating
+              immersive, lifelike, and dynamic virtual experiences. With continued research and development, the future
+              of NeRFs in video games looks incredibly promising.
+              <br><br>
+              The successful integration of the Luma AI app, Mixamo auto rigging, and Unreal Engine has provided
+              invaluable insights into the challenges and potential of object recognition, animation, and physics
+              simulation within the realm of virtual environments. This study serves as a stepping stone for future
+              research, highlighting key areas for improvement and further exploration.
+              <br><br>
+              One area that deserves attention is the acquisition of additional visual data to enhance physics
+              simulations. By expanding the dataset used for training and testing, researchers can improve the accuracy
+              and realism of simulated physical interactions. This could involve capturing more diverse and dynamic
+              scenarios, considering various lighting conditions, or incorporating complex material properties to better
+              mimic real-world physics.
+              <br><br>
+              Furthermore, the fine-tuning of physics settings holds promise for achieving more convincing and lifelike
+              behavior, especially when it comes to simulating candle physics. By meticulously adjusting parameters such
+              as mass, friction, and buoyancy, researchers can aim for a more faithful representation of the subtle
+              nuances and intricacies of real-world candle dynamics. This could involve conducting empirical studies to
+              collect data on the behavior of real candles and leveraging computational techniques to model and
+              replicate these characteristics in virtual environments.
+              <br><br>
+              By addressing these challenges and delving deeper into the complexities of object recognition, animation,
+              and physics simulation, we can propel the development of more interactive, immersive, and realistic
+              virtual experiences. This research contributes to the advancement of the field, serving as a foundation
+              for future innovations and highlighting the multifaceted nature of creating captivating virtual worlds.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+
+            <p>
+              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template"
+                target="_blank">Academic Project Page Template</a>.
+              You are free to borrow the of this website, we just ask that you link back to this page in the footer.
+              <br> This website is licensed under a <a rel="license"
+                href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
